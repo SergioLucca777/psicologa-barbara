@@ -51,7 +51,7 @@
         show(e.target);
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
 
     targets.forEach(function (t) {
       // o que já está na primeira dobra entra na hora, com um respiro
