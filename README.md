@@ -1,132 +1,111 @@
-# psibarbaramartini — landing page
+# Bárbara Martini — site
 
-Landing page da psicóloga Bárbara Martini (CRP-SC 12/22106), Itajaí – SC.
-Conteúdo extraído do site atual (psibarbaramartini.com.br) e reorganizado; nada de dado inventado.
+Landing page e página de agendamento da psicóloga **Bárbara Martini** (CRP-SC 12/22106), Itajaí – SC.
+
+Site estático: HTML, CSS e JavaScript puro. **Sem build, sem dependências, sem framework.**
+Abrir `index.html` num servidor HTTP local já funciona.
 
 ## Estrutura
 
 ```
-index.html            landing (3 direções de composição selecionáveis por ?v=a|b|c, padrão a)
-agendar.html          página de agendamento — destino de TODOS os botões "Agende sua consulta"
-assets/css/base.css   sistema: cor, tipografia, componentes, responsivo
-assets/css/variants.css  composições A (tapeçaria), B (gravura), C (serena)
-assets/css/fonts.css  @font-face self-hosted (Newsreader + Instrument Sans)
-assets/fonts/         woff2 (sem CDN)
-assets/img/           foto da Bárbara (jpg/webp), recorte da tapeçaria, favicon
-assets/js/site.js     menu mobile, revelação das seções, seletor ?v=
-shots/                prints de verificação
-preview/              prints prontos para envio
+index.html               página principal
+agendar.html             página de agendamento (WhatsApp)
+assets/css/base.css      tokens, layout, tipografia, componentes
+assets/css/motion.css    camada de animação (revelações, arco, progresso)
+assets/css/variants.css  variantes A/B/C do hero — só experimento, não é produção
+assets/css/fonts.css     @font-face das fontes self-hosted
+assets/js/site.js        tema por query string, menu mobile
+assets/js/motion.js      IntersectionObserver, revelações, derivas (2 KB, sem lib)
+assets/fonts/            Cormorant Garamond, Newsreader itálico, Instrument Sans
+assets/img/              fotos, ícones, cartões de preview (og-*.jpg)
+brand/                   identidade: SVGs, pranchas, gerador de logo
+docs/                    plano de agenda e paleta
+deploy.sh                rsync para o servidor (produção, /psi/)
+publish-motion.sh        rsync para /psi-motion/
 ```
 
-## Pré-visualizar
+## Branches
+
+- `master` — versão atual, com camada de movimento.
+- `v1-estatica` — versão anterior, congelada, sem animação. Serve de referência.
+
+## Rodar localmente
 
 ```bash
-cd /root/psicologa-barbara
-python3 -m http.server 8811 --bind 127.0.0.1
-# http://127.0.0.1:8811/index.html?v=a
+python3 -m http.server 8080
+# http://localhost:8080
 ```
 
-Abrir como `file://` não carrega as webfonts — usar HTTP.
+Abrir como `file://` não carrega as webfonts — precisa de HTTP.
 
-## Identidade visual
+No Windows: duplo clique em `abrir-local.bat` (detecta `py` ou `python`).
+No VS Code, a extensão **Live Server** também resolve.
 
+## Tipografia
+
+| Papel | Fonte | Licença |
+|---|---|---|
+| Display, títulos | Cormorant Garamond | SIL OFL — redistribuível |
+| Itálico da headline | Newsreader itálico (subconjunto) | SIL OFL — redistribuível |
+| Interface | Instrument Sans | SIL OFL — redistribuível |
+
+**Acumin Variable Concept não está no repositório.** É licença Adobe: o CSS pede
+`'Acumin Variable Concept'` primeiro e cai para Instrument Sans. Para servir a Acumin de
+verdade, é preciso o kit do Adobe Fonts na conta de quem publica.
+
+## Cores
+
+A paleta inteira vive em custom properties no topo de `assets/css/base.css`
+(`--creme`, `--creme-2`, `--creme-3`, `--marinho`, `--accent`, `--ink`, `--muted`…).
+Nenhuma cor é escrita solta — trocar o tema é trocar o bloco `html[data-theme="..."]`.
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--creme` | `#F7F1E6` | fundo claro, texto sobre escuro |
+| `--creme-2` | `#EFE4D2` | seções alternadas |
+| `--marinho` | `#2F3B5D` | hero, CTA, bandas escuras |
+| `--marinho-deep` | `#232C47` | hover, banda escura |
+| `--marinho-ink` | `#141A2B` | rodapé, texto sobre creme |
+| `--muted` | `#565D6E` | parágrafos e legendas |
+
+Contrastes medidos: creme sobre marinho **9,81:1** · tinta sobre creme **15,47:1** ·
+apoio sobre creme **4,89:1** (mínimo do arquivo, ainda acima de AA).
+
+## Movimento
+
+`motion.js` faz quatro coisas: revelação linha por linha da headline, revelação de seções
+ao entrar na tela, barra de progresso de leitura e deriva da marca d'água. Tudo desliga em
+`prefers-reduced-motion`.
+
+**Watchdog:** se o `motion.js` não carregar em 2,5 s, o `<html>` recebe `motion-off` e a
+página mostra todo o conteúdo. Sem isso, uma falha de rede deixaria o site em branco —
+o CSS esconde as seções até o JS revelá-las.
+
+## Acessibilidade
+
+- axe-core (WCAG 2.1 AA): **zero violações** nas duas páginas.
+- Foco de teclado visível em todos os fundos, inclusive o hero escuro (`.on-dark`).
+- Alvos de toque ≥ 24 px (WCAG 2.5.8); os principais ≥ 44 px.
+- Zero overflow horizontal de 320 px a 1920 px.
+- Imagens com `width`/`height` e `loading="lazy"` fora da primeira dobra.
+
+## Publicação
+
+```bash
+./publish-motion.sh   # envia para /srv/psi-motion/ (versão com movimento)
+./deploy.sh           # envia para /srv/psi/ (produção)
 ```
-brand/
-  identidade.png            prancha oficial: paleta + tipografia (sem logo)
-  sheet.html                fonte da prancha
-  logo-bm-creme.png         monograma BM em creme (fundo escuro) — usado no cabeçalho
-  logo-bm-marinho.png       monograma BM em marinho (fundo claro)
-  logo-completo-creme.png   BM + "BÁRBARA MARTINI" + "PSICOLOGIA" (creme)
-  logo-completo-marinho.png mesma assinatura em marinho
-  _arquivo-v1/              primeira proposta (arco + bm), descartada
-```
 
-Tipografia:
-
-- **Cormorant Garamond** (display, títulos) — embutida em `assets/fonts/cormorant-*.woff2`, SIL OFL.
-- **Acumin Variable Concept** (interface) — licenciada Adobe. O CSS pede Acumin primeiro e cai em
-  Instrument Sans quando ela não está disponível. Para servir de verdade, usar kit do Adobe Fonts
-  e trocar a `font-family` em `--sans`.
-- **Newsreader Italic** — só na palavra em itálico da headline (`--serif-italic`).
-
-O logo no cabeçalho é PNG (recortado da arte original, fundo removido). Em 29 px ele fica nítido em
-telas 2x/3x; o favicon usa o monograma em 16/32 px com traço levemente engrossado.
-
-## Paleta (contraste calculado)
-
-- terracota `#A94E2B` — campo principal, creme `#F7F1E6` a 4.9:1
-- terracota profundo `#8A3B1E` — bandas, creme a 6.9:1
-- terracota tinta `#6E2E16` — rodapé, creme a 8.0:1
-- oliva `#2C3527` — seção do consultório, creme a 11.3:1
-- creme `#F7F1E6` / creme-2 `#EFE4D2`
-- texto secundário `#615549` sobre creme a 6.3:1
+O site é servido pelo nginx do servidor, sem Node.
 
 ## Conteúdo
 
-Tudo extraído do site atual: textos, formação, CRP, telefone, Instagram, FAQ,
-endereço completo (R. Antônio Manoel Moreira, 111 · Fazenda · Itajaí – SC ·
-88301-640) e as fotos do consultório (sala de espera, sala de atendimento e
-recepção). O site não publica valores nem grade de horários — informa apenas
-"consulte horários e valores com a equipe", que é como está na página.
+O texto é da própria Bárbara. Dados factuais (endereço, CRP, telefone, formação) não são
+placeholders — alterar exige confirmação dela.
 
-## Pendente de confirmação
+## Contribuindo
 
-- Valores e grade de horários (se quiserem publicar)
-- Link do Instagram e número de WhatsApp conferidos na origem
-
-## Verificação feita
-
-- webfonts carregadas (10 faces, subset latin)
-- overflow horizontal = 0 em 1440×900, 1280×800, 390×844
-- dobra: hero 784 px em 1280×800 e 807 px em 1440×900
-- prints em `preview/`
-
-## Duas versões de cor
-
-O mesmo HTML serve as duas paletas; a troca é um atributo no `<html>` (`data-theme="azul"`).
-
-- Terracota (padrão): https://169.58.180.200/psi/
-- Azul `#006F9A`: https://169.58.180.200/psi/?tema=azul
-- Marinho `#2F3B5D`: https://169.58.180.200/psi/?tema=marinho
-
-O parâmetro `?tema=azul` é aplicado antes do primeiro paint (script inline no `<head>`),
-então não há flash de cor errada, e é propagado para os links internos pelo `site.js`.
-Cores do tema em `assets/css/base.css`, bloco final `html[data-theme="azul"]`.
-
-### Publicar
-
-    /root/psicologa-barbara/deploy.sh
-
-Copia para `/srv/psi`, servido pelo nginx em `/psi/` (mesmo server do SaaS, porta 443).
-
-## Editar e ver localmente (Windows)
-
-1. Baixe o `psicologa-barbara.bundle` e, na pasta onde quiser o projeto:
-
-```
-git clone psicologa-barbara-20261106.bundle psicologa-barbara
-cd psicologa-barbara
-```
-
-2. Abra a pasta no editor (VS Code: *File → Open Folder*).
-3. Duplo clique em **`abrir-local.bat`** → abre `http://localhost:8080` no navegador.
-   Sem Python? No VS Code, instale a extensão **Live Server** e clique com o botão direito
-   em `index.html` → *Open with Live Server* (recarrega sozinho ao salvar).
-4. Edite, salve, aperte **F5** no navegador.
-
-### Onde mexer
-
-| O que | Arquivo |
-|---|---|
-| Textos, seções, títulos | `index.html` |
-| Página do WhatsApp | `agendar.html` |
-| Cores (paleta marinho `#2F3B5D`) | `assets/css/base.css` → bloco `html[data-theme="marinho"]` |
-| Tamanhos, espaçamentos, grids | `assets/css/base.css` (`:root` no topo) |
-| Foto do topo | `assets/img/hero-3.jpg` (trocar o arquivo mantendo o nome) |
-| Fontes | `assets/fonts/` + `assets/css/fonts.css` |
-
-O site é estático: nenhum build, nenhum `npm install`. Salvar o arquivo é o suficiente.
-
-### Publicar de volta no servidor
-
-`./publish.sh` (na VPS) copia para `/srv/psi`; `./unpublish.sh` tira do ar.
+1. Crie a branch a partir de `master`: `git checkout -b feat/nome-curto`
+2. Rode `python3 -m http.server 8080` e teste em 390 px e 1440 px.
+3. Antes de abrir PR: sem overflow horizontal, foco visível, e `prefers-reduced-motion` funcionando.
+4. PR descreve o antes/depois com print nas duas larguras.
