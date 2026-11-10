@@ -5,6 +5,32 @@
    prefers-reduced-motion.
    ============================================================ */
 
+/* ---------- freio de mão: se o JS falhar, nada fica escondido ---------- */
+html.motion-off [data-reveal],
+html.motion-off [data-line]{
+  opacity:1 !important;
+  transform:none !important;
+  clip-path:none !important;
+}
+html.motion-off [data-lines] > span{ overflow:visible !important; }
+html.motion-off [data-lines] .ln-i{ transform:none !important; opacity:1 !important; }
+html.motion-off [data-arch] img{ clip-path:none !important; transform:none !important; }
+html.motion-off .progress{ display:none !important; }
+
+/* ---------- alvo de toque confortável nos links de seção ---------- */
+main .link-arrow,
+main .aside-link{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+}
+
+/* ---------- foco visível sobre o hero marinho ---------- */
+.hero :focus-visible{
+  outline-color:rgba(247,241,230,.96) !important;
+  outline-offset:4px;
+}
+
 /* ---------- 0. base ---------- */
 
 html.js [data-reveal]{
@@ -99,7 +125,7 @@ html.js [data-line].is-in::before{ transform:scaleX(1); }
   transform:scaleX(0); transform-origin:left center;
   z-index:150; pointer-events:none;
 }
-.progress.on-darkpage{ background:var(--terra, #2F3B5D); }
+.progress.on-darkpage{ background:var(--accent, #2F3B5D); }
 
 /* ---------- 7. transição entre páginas ---------- */
 

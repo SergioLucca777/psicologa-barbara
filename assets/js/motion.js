@@ -126,8 +126,18 @@
     progress();
     drift();
     parallax();
+    window.__motionReady = true;
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-  else boot();
+  // se qualquer coisa falhar, o HTML volta a mostrar tudo em vez de ficar em branco
+  function safeBoot() {
+    try { boot(); }
+    catch (err) {
+      docEl.classList.add('motion-off');
+      if (window.console && console.warn) console.warn('motion desligado:', err);
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', safeBoot);
+  else safeBoot();
 })();
