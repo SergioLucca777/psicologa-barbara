@@ -1,0 +1,235 @@
+/* ============================================================
+   Variantes de composição — A (tapeçaria) · B (gravura) · C (serena)
+   O HTML é o mesmo; muda a arquitetura da página.
+   ============================================================ */
+
+/* ---------- A · Tapeçaria ---------- */
+
+html[data-v="a"] .motif-hero{
+  width:min(900px, 84vw);
+  height:auto;
+  aspect-ratio:1;
+  right:-15%;
+  top:-14%;
+}
+html[data-v="a"] .hero-media{ padding-top:clamp(0px, 2vw, 26px); }
+@media (min-width: 1081px){
+  html[data-v="a"] .ledger{ margin-top:44px; }
+}
+html[data-v="a"] .hero .display{ max-width:15ch; }
+html[data-v="a"] .manifesto .motif-band{ inset:-8% -6% -14% -6%; width:112%; height:122%; }
+html[data-v="a"] .consultorio .motif-band{ right:-8%; top:-30%; width:64%; height:170%; }
+html[data-v="a"] .cta .motif-cta{ width:min(640px, 62vw); left:-14%; bottom:-52%; opacity:.9; }
+
+/* ---------- B · Gravura ---------- */
+/* Página creme; terracota vira bloco tipográfico. Foto sangrando na borda. */
+
+html[data-v="b"]{ --gutter: clamp(20px, 4vw, 56px); }
+html[data-v="b"] body{ background:var(--creme); }
+
+html[data-v="b"] .site-head{
+  background:var(--creme);
+  color:var(--ink);
+  border-bottom:1px solid var(--line);
+}
+html[data-v="b"] .brand-meta{ color:var(--muted); }
+html[data-v="b"] .nav a{ color:var(--ink); opacity:1; }
+html[data-v="b"] .nav a::after{ background:var(--terra); }
+html[data-v="b"] .head-cta{
+  --bg:var(--terra); --fg:var(--creme); --bd:var(--terra);
+  background:var(--terra); color:var(--creme); border-color:var(--terra);
+}
+html[data-v="b"] .head-cta:hover{ background:var(--terra-deep); border-color:var(--terra-deep); }
+html[data-v="b"] .nav-toggle{ border-color:var(--line); }
+html[data-v="b"] .nav-toggle span,
+html[data-v="b"] .nav-toggle span::before,
+html[data-v="b"] .nav-toggle span::after{ background:var(--ink); }
+
+html[data-v="b"] .hero{
+  background:var(--creme);
+  color:var(--ink);
+  padding-top:0;
+}
+html[data-v="b"] .hero > .wrap{
+  max-width:none;
+  padding:0;
+}
+html[data-v="b"] .hero-grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:stretch;
+  padding-block:0;
+  gap:0;
+  min-height:calc(100dvh - 75px);
+}
+html[data-v="b"] .hero-copy{
+  background:var(--terra);
+  color:var(--creme);
+  padding:clamp(30px,3.4vw,52px) clamp(26px,3.6vw,56px) clamp(28px,3.2vw,44px);
+  padding-left:max(var(--gutter), calc((100vw - var(--maxw))/2 + var(--gutter)));
+  padding-right:clamp(30px,5vw,80px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin-right:clamp(-56px,-4vw,-24px);
+  z-index:3;
+  position:relative;
+  box-shadow:18px 0 48px -34px rgba(36,15,8,.6);
+}
+html[data-v="b"] .hero-copy .display{ font-size:clamp(32px,3.85vw,56px); line-height:1.02; max-width:15ch; }
+html[data-v="b"] .hero-copy .eyebrow{ margin-bottom:20px; }
+html[data-v="b"] .hero-copy .lede{ font-size:16px; line-height:1.55; max-width:38ch; }
+html[data-v="b"] .hero-copy .hero-actions{ margin-bottom:0; }
+html[data-v="b"] .hero-copy .hero-note{ margin-top:22px; padding-top:14px; font-size:11px; max-width:32ch; }
+html[data-v="b"] .hero-copy .eyebrow,
+html[data-v="b"] .hero-copy .lede,
+html[data-v="b"] .hero-copy .hero-note{ color:var(--creme); }
+html[data-v="b"] .hero-note{ border-top-color:rgba(247,241,230,.35); }
+html[data-v="b"] .hero-actions .link-arrow{ color:var(--creme); border-color:rgba(247,241,230,.55); }
+html[data-v="b"] .hero-media{ height:100%; align-self:stretch; margin:0; display:flex; flex-direction:column; }
+html[data-v="b"] .hero-media .arch{
+  border-radius:0;
+  flex:1;
+  height:auto;
+  aspect-ratio:auto;
+  min-height:clamp(420px, 62vh, 620px);
+  box-shadow:none;
+}
+html[data-v="b"] .hero-media img{ object-position:52% 30%; }
+html[data-v="b"] .hero-media figcaption{
+  color:var(--muted);
+  position:absolute;
+  bottom:18px;
+  left:calc(var(--gutter) + 18px);
+  padding:6px 12px;
+  background:rgba(247,241,230,.92);
+  z-index:4;
+}
+html[data-v="b"] .hero-media figcaption::before{ background:var(--line); }
+html[data-v="b"] .hero .motif-hero{ display:none; }
+
+html[data-v="b"] .manifesto{ background:var(--creme-2); color:var(--ink); }
+html[data-v="b"] .manifesto .eyebrow{ color:var(--terra-deep); }
+html[data-v="b"] .manifesto blockquote{ max-width:34ch; }
+html[data-v="b"] .manifesto .attrib{ color:var(--muted); }
+html[data-v="b"] .manifesto .motif-band{ color:rgba(169,78,43,.18); }
+
+html[data-v="b"] .ledger-layout{ grid-template-columns:minmax(0,.5fr) minmax(0,1fr); }
+html[data-v="b"] .ledger li .row{ grid-template-columns:34px minmax(0,1fr); }
+html[data-v="b"] .ledger .num{ font-style:normal; font-family:var(--sans); font-size:11px; letter-spacing:.12em; line-height:2.2; }
+html[data-v="b"] .ledger .t{ font-size:clamp(19px,1.45vw,23px); }
+
+html[data-v="b"] .steps{ border-top-color:var(--line); }
+html[data-v="b"] .step::before{ background:var(--oliva); }
+
+html[data-v="b"] .matrix{ gap:0; border:0; border-top:1px solid var(--line); background:transparent; }
+html[data-v="b"] .matrix .cell{ background:transparent; border-bottom:1px solid var(--line); padding-inline:0; padding-right:clamp(16px,2vw,30px); }
+html[data-v="b"] .matrix .cell:hover{ background:rgba(169,78,43,.04); }
+html[data-v="b"] .matrix{ border-left:0; border-right:0; }
+
+html[data-v="b"] .sobre-grid{ grid-template-columns:minmax(0,.6fr) minmax(0,1fr); }
+html[data-v="b"] .footer{ background:var(--ink); }
+
+/* ---------- C · Serena ---------- */
+/* Abertura tipográfica ampla, foto em faixa panorâmica, curvas suaves. */
+
+html[data-v="c"] .hero{ background:var(--creme); color:var(--ink); }
+html[data-v="c"] .hero .motif-hero{ display:none; }
+html[data-v="c"] .site-head{ background:var(--creme); color:var(--ink); border-bottom:1px solid var(--line); }
+html[data-v="c"] .brand-meta{ color:var(--muted); }
+html[data-v="c"] .nav a{ color:var(--ink); opacity:1; }
+html[data-v="c"] .nav a::after{ background:var(--terra); }
+html[data-v="c"] .head-cta{ background:var(--terra); border-color:var(--terra); color:var(--creme); }
+html[data-v="c"] .head-cta:hover{ background:var(--terra-deep); border-color:var(--terra-deep); }
+html[data-v="c"] .nav-toggle{ border-color:var(--line); }
+html[data-v="c"] .nav-toggle span,
+html[data-v="c"] .nav-toggle span::before,
+html[data-v="c"] .nav-toggle span::after{ background:var(--ink); }
+
+html[data-v="c"] .hero-grid{
+  grid-template-columns:1fr;
+  padding-block:clamp(22px,2.6vw,38px) 0;
+  gap:clamp(18px,2.2vw,26px);
+}
+html[data-v="c"] .hero-copy{
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
+  column-gap:clamp(24px,4vw,64px);
+  align-items:end;
+  padding-bottom:0;
+}
+html[data-v="c"] .hero-copy .eyebrow{ grid-column:1/-1; margin-bottom:18px; }
+html[data-v="c"] .hero-copy .display{ grid-column:1; margin-bottom:0; max-width:19ch; font-size:clamp(34px,4.35vw,62px); line-height:1.01; }
+html[data-v="c"] .hero-copy .lede{ grid-column:2; align-self:end; margin-bottom:6px; color:var(--muted); max-width:32ch; }
+html[data-v="c"] .hero-copy .hero-actions{ grid-column:2; margin-top:20px; }
+html[data-v="c"] .hero-copy .btn{
+  background:var(--terra); border-color:var(--terra); color:var(--creme);
+}
+html[data-v="c"] .hero-copy .btn:hover{ background:var(--terra-deep); border-color:var(--terra-deep); }
+html[data-v="c"] .hero-copy .link-arrow{ color:var(--terra-deep); border-color:rgba(36,29,24,.3); }
+html[data-v="c"] .hero-note{
+  grid-column:1/-1;
+  margin-top:12px;
+  color:var(--muted);
+  border-top-color:var(--line);
+  max-width:none;
+}
+html[data-v="c"] .hero-media{ width:100%; }
+html[data-v="c"] .hero-media .arch{
+  border-radius:14px;
+  aspect-ratio:16/6.9;
+  background:var(--creme-2);
+}
+html[data-v="c"] .hero-media img{ object-position:50% 27.5%; }
+html[data-v="c"] .hero-media figcaption{ color:var(--muted); }
+html[data-v="c"] .hero-media figcaption::before{ background:var(--line); }
+
+html[data-v="c"] .manifesto{ background:var(--oliva-ink); }
+html[data-v="c"] .manifesto-grid{ grid-template-columns:1fr; gap:22px; }
+html[data-v="c"] .manifesto blockquote{ max-width:38ch; font-size:clamp(26px,3.4vw,46px); }
+
+html[data-v="c"] .steps{
+  border-top:0;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(14px,1.6vw,24px);
+}
+html[data-v="c"] .step{
+  background:var(--creme);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:clamp(20px,2.2vw,28px);
+  padding-top:clamp(50px,5vw,64px);
+}
+html[data-v="c"] .step::before{ top:clamp(20px,2.2vw,28px); left:clamp(20px,2.2vw,28px); }
+html[data-v="c"] .step .n{ position:absolute; top:clamp(16px,1.8vw,24px); right:clamp(16px,1.8vw,24px); margin:0; }
+
+html[data-v="c"] .matrix{ border-radius:12px; overflow:hidden; }
+html[data-v="c"] .matrix .cell{ background:var(--creme); border-radius:0; }
+
+html[data-v="c"] .sobre-grid{ grid-template-columns:minmax(0,.66fr) minmax(0,1fr); }
+html[data-v="c"] .consultorio{ background:var(--terra-deep); }
+html[data-v="c"] .cta{ background:var(--terra); }
+html[data-v="c"] .footer{ background:var(--oliva-ink); }
+
+@media (max-width: 1080px){
+  html[data-v="b"] .hero-grid{ grid-template-columns:1fr; }
+  html[data-v="b"] .hero-copy{ margin-right:0; }
+  html[data-v="b"] .hero-media .arch{ min-height:52vh; }
+  html[data-v="b"] .hero-media figcaption{ position:static; padding-top:12px; bottom:auto; }
+  html[data-v="b"] .manifesto .motif-band{ opacity:.5; }
+  html[data-v="c"] .hero-copy{ grid-template-columns:1fr; }
+  html[data-v="c"] .hero-copy .display,
+  html[data-v="c"] .hero-copy .lede,
+  html[data-v="c"] .hero-copy .hero-actions{ grid-column:1; }
+  html[data-v="c"] .hero-copy .lede{ margin-top:18px; }
+  html[data-v="c"] .steps{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+@media (max-width: 860px){
+  html[data-v="b"] .hero-copy{ padding:28px var(--gutter) 32px; }
+  html[data-v="c"] .hero-media .arch{ aspect-ratio:4/4.4; }
+}
+
+@media (max-width: 640px){
+  html[data-v="c"] .steps{ grid-template-columns:1fr; }
+  html[data-v="b"] .ledger-layout{ grid-template-columns:1fr; }
+}

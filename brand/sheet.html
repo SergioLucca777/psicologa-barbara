@@ -1,0 +1,89 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<style>
+  :root{--creme:#F7F1E6;--marinho:#2F3B5D;--texto:#151A26;--muted:#565D6E;--linha:#DCD1BC}
+  *{box-sizing:border-box} body{margin:0;background:var(--creme);color:var(--texto);font-family:'Instrument Sans',system-ui,sans-serif}
+  .sheet{width:1600px;padding-bottom:40px}
+  .bar{display:flex;justify-content:space-between;align-items:baseline;padding:34px 72px 22px;border-bottom:1px solid var(--linha)}
+  .bar b{font:600 12px/1 'Instrument Sans';letter-spacing:.28em;text-transform:uppercase;color:var(--marinho)}
+  .bar span{font:400 11px/1 'Instrument Sans';letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+  .intro{padding:64px 72px 54px;max-width:1050px}
+  .intro h1{margin:0;font-family:'Cormorant Garamond';font-weight:300;font-size:64px;line-height:1.02;letter-spacing:-.01em;color:var(--marinho)}
+  .intro p{margin:16px 0 0;font-size:15px;line-height:1.6;color:var(--muted);max-width:56ch}
+
+  .sec{padding:0 72px}
+  .sec h2{margin:0 0 26px;font:600 11px/1 'Instrument Sans';letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+    border-top:1px solid var(--linha);padding-top:24px}
+  .pal{display:grid;grid-template-columns:repeat(10,1fr);gap:10px}
+  .sw{height:96px;border:1px solid rgba(21,26,38,.10)}
+  .cn{margin-top:10px;font:600 11.5px/1.3 'Instrument Sans';color:var(--texto)}
+  .cr{margin-top:2px;font:400 10px/1.3 'Instrument Sans';color:var(--muted)}
+  .ch{margin-top:4px;font:400 10px/1.3 ui-monospace,monospace;color:var(--muted)}
+
+  .types{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:20px;padding:44px 72px 10px}
+  .card{border:1px solid var(--linha);padding:26px;display:flex;flex-direction:column;gap:8px;min-width:0}
+  .lab{font:600 10px/1 'Instrument Sans';letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .aa{font-size:104px;line-height:.9;color:var(--marinho);margin:2px 0 10px}
+  .nm{font:600 13px/1.3 'Instrument Sans';color:var(--texto)}
+  .meta{font:400 10.5px/1.5 ui-monospace,monospace;color:var(--muted)}
+  .sp{margin-top:8px;font-size:14px;line-height:1.55;color:var(--muted)}
+  .corm .aa{font-family:'Cormorant Garamond';font-weight:300}
+  .corm .sp{font-family:'Cormorant Garamond';font-size:23px;line-height:1.35;color:var(--marinho)}
+  .acum .aa{font-family:'Instrument Sans';font-weight:400}
+  .news .aa{font-family:'Newsreader';font-weight:300;font-style:italic}
+  .news .sp{font-family:'Newsreader';font-style:italic;font-size:20px;color:var(--marinho)}
+  .note{margin:18px 72px 0;padding:16px 18px;border-left:2px solid var(--marinho);background:rgba(47,59,93,.045);
+    font-size:12.5px;line-height:1.6;color:var(--muted)}
+  .foot{display:flex;justify-content:space-between;margin:44px 72px 0;padding-top:20px;border-top:1px solid var(--linha);
+    font:400 10.5px/1 'Instrument Sans';letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+</style>
+
+<div class="sheet">
+  <div class="bar"><b>Bárbara Martini</b><span>identidade visual · cores e tipografia · 2026</span></div>
+
+  <div class="intro">
+    <h1>Cor, papel e voz</h1>
+    <p>Uma paleta sóbria de creme e marinho, e um par tipográfico de contraste alto: serifada para a fala clínica, grotesca para a informação.</p>
+  </div>
+
+  <div class="sec"><h2>paleta</h2><div class="pal"><div class="chip"><div class="sw" style="background:#F7F1E6"></div>
+  <div class="cn">Creme</div><div class="cr">fundo principal</div><div class="ch">#F7F1E6</div></div><div class="chip"><div class="sw" style="background:#EFE4D2"></div>
+  <div class="cn">Creme 2</div><div class="cr">seção alternada</div><div class="ch">#EFE4D2</div></div><div class="chip"><div class="sw" style="background:#E5D5BE"></div>
+  <div class="cn">Creme 3</div><div class="cr">detalhe</div><div class="ch">#E5D5BE</div></div><div class="chip"><div class="sw" style="background:#2F3B5D"></div>
+  <div class="cn">Marinho</div><div class="cr">campo · CTA</div><div class="ch">#2F3B5D</div></div><div class="chip"><div class="sw" style="background:#232C47"></div>
+  <div class="cn">Profundo</div><div class="cr">banda escura</div><div class="ch">#232C47</div></div><div class="chip"><div class="sw" style="background:#141A2B"></div>
+  <div class="cn">Tinta</div><div class="cr">rodapé</div><div class="ch">#141A2B</div></div><div class="chip"><div class="sw" style="background:#1B2238"></div>
+  <div class="cn">Petróleo</div><div class="cr">consultório</div><div class="ch">#1B2238</div></div><div class="chip"><div class="sw" style="background:#5A6890"></div>
+  <div class="cn">Apoio</div><div class="cr">linhas · hover</div><div class="ch">#5A6890</div></div><div class="chip"><div class="sw" style="background:#151A26"></div>
+  <div class="cn">Texto</div><div class="cr">corpo</div><div class="ch">#151A26</div></div><div class="chip"><div class="sw" style="background:#565D6E"></div>
+  <div class="cn">Secundário</div><div class="cr">legendas</div><div class="ch">#565D6E</div></div></div></div>
+
+  <div class="types">
+    <div class="card corm"><div class="lab">fonte principal · display</div>
+      <div class="aa">Aa</div>
+      <div class="nm">Cormorant Garamond</div>
+      <div class="meta">300 · 400 · 500 · 600 — normal e itálico</div>
+      <div class="sp">Escuta clínica, presença e cuidado.</div>
+    </div>
+    <div class="card acum"><div class="lab">fonte secundária · interface</div>
+      <div class="aa">Aa</div>
+      <div class="nm">Acumin Variable Concept</div>
+      <div class="meta">400 · 500 · 600 — textura neutra, leitura longa</div>
+      <div class="sp">Agende sua consulta · Psicoterapia individual e de casal</div>
+    </div>
+    <div class="card news"><div class="lab">itálico de destaque</div>
+      <div class="aa">Aa</div>
+      <div class="nm">Newsreader Italic</div>
+      <div class="meta">300 · 400 — usado só na palavra em itálico da headline</div>
+      <div class="sp">transforme</div>
+    </div>
+  </div>
+
+  <div class="note"><b>Nota de licenciamento.</b> Cormorant Garamond é livre (SIL OFL) e está embutida no site.
+  Acumin Variable Concept é licenciada pela Adobe: não pode ser redistribuída como arquivo. No site ela entra
+  por kit do Adobe Fonts (incluso no Creative Cloud) ou pela instalação local no computador — enquanto isso,
+  a Instrument Sans assume com as mesmas caixas.</div>
+
+  <div class="foot"><span>CRP-SC 12/22106 · Itajaí, SC</span><span>uso restrito</span></div>
+</div>

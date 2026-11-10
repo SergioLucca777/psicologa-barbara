@@ -1,0 +1,58 @@
+/* ============================================================
+   Bárbara Martini — paleta e tipografia oficiais
+   Tema marinho (#2F3B5D), o que está no ar.
+   Os nomes abaixo são os "de leitura humana"; o site usa os
+   tokens genéricos (--terra, --terra-deep...) — mapa no fim.
+   ============================================================ */
+
+:root{
+  /* ---------- fundos ---------- */
+  --creme:            #F7F1E6;  /* fundo principal, texto sobre escuro */
+  --creme-2:          #EFE4D2;  /* seções alternadas (tratamentos, sobre) */
+  --creme-3:          #E5D5BE;  /* placeholder de imagem, detalhe */
+
+  /* ---------- campo e profundidade ---------- */
+  --marinho:          #2F3B5D;  /* campo principal: hero, CTA, banda */
+  --marinho-profundo: #232C47;  /* banda escura, hovers */
+  --marinho-tinta:    #141A2B;  /* rodapé */
+  --petroleo:         #1B2238;  /* seção do consultório */
+  --marinho-apoio:    #5A6890;  /* linhas, estados, detalhe */
+
+  /* ---------- texto ---------- */
+  --tinta:            #151A26;  /* texto principal sobre creme */
+  --texto-secundario: #565D6E;  /* parágrafos, legendas, meta */
+
+  /* ---------- linhas ---------- */
+  --linha-forte:        rgba(21,26,38,.20);    /* divisórias visíveis */
+  --linha-suave:        rgba(21,26,38,.09);    /* grade interna */
+  --linha-sobre-escuro: rgba(247,241,230,.26); /* divisórias no marinho */
+
+  /* ---------- rgb, para transparências ---------- */
+  --rgb-marinho:      47,59,93;
+  --rgb-tinta-marinho: 20,26,43;
+  --rgb-sombra:       8,12,24;
+}
+
+/* ------------------------------------------------------------
+   Mapa: como esses nomes aparecem no assets/css/base.css
+   (o token genérico --terra é o "campo" — hoje marinho)
+   ------------------------------------------------------------
+   --terra         → --marinho
+   --terra-deep    → --marinho-profundo
+   --terra-ink     → --marinho-tinta
+   --terra-soft    → --marinho-apoio
+   --oliva         → --petroleo
+   --oliva-ink     → #101524 (topo do gradiente do consultório)
+   --ink           → --tinta
+   --muted         → --texto-secundario
+   ------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------
+   Tipografia
+   ------------------------------------------------------------
+   --serif         Cormorant Garamond 300–600 (Google Fonts, OFL) — títulos
+   --sans          Acumin Variable Concept (Adobe) — interface
+                   fallback: Instrument Sans (embutida)
+   --serif-italic  Newsreader Italic — só a palavra em itálico da headline
+   ------------------------------------------------------------ */
