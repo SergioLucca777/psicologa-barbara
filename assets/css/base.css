@@ -182,7 +182,7 @@ p{ margin:0; }
 .btn:active{ transform:translateY(0); }
 
 .btn--ghost{
-  --bg:transparent; --fg:var(--accent-ink-2, var(--accent-ink)); --bd:rgba(36,29,24,.35);
+  --bg:transparent; --fg:var(--accent-ink); --bd:rgba(36,29,24,.35);
   color:var(--accent-ink); border-color:rgba(36,29,24,.32);
 }
 .btn--ghost:hover{ background:rgba(36,29,24,.05); border-color:rgba(36,29,24,.45); }
